@@ -1,3 +1,11 @@
 {
-  "version": 2
+  "version": 2,
+  "functions": {
+    "api/oura.js": {
+      "runtime": "nodejs20.x"
+    },
+    "api/nutrition.js": {
+      "runtime": "nodejs20.x"
+    }
+  }
 }
