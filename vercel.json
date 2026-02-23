@@ -2,10 +2,10 @@
   "version": 2,
   "functions": {
     "api/oura.js": {
-      "runtime": "nodejs20.x"
+      "runtime": "@vercel/node@3.0.0"
     },
     "api/nutrition.js": {
-      "runtime": "nodejs20.x"
+      "runtime": "@vercel/node@3.0.0"
     }
   }
 }
