@@ -8,18 +8,18 @@ export default async function handler(req, res) {
   const { query } = req.body;
   if (!query) return res.status(400).json({ error: 'Falta el campo query' });
 
-  const apiKey = process.env.OPENROUTER_KEY;
+  const apiKey = process.env.HF_TOKEN;
   if (!apiKey) return res.status(500).json({ error: 'API key no configurada' });
 
   try {
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    const response = await fetch('https://router.huggingface.co/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + apiKey
       },
       body: JSON.stringify({
-        model: 'mistralai/mistral-7b-instruct',
+        model: 'meta-llama/Llama-3.3-70B-Instruct',
         temperature: 0.1,
         max_tokens: 512,
         messages: [
@@ -44,6 +44,6 @@ export default async function handler(req, res) {
 
     return res.status(200).json(JSON.parse(match[0]));
   } catch (err) {
-    return res.status(500).json({ error: 'Error al conectar con OpenRouter', detail: err.message });
+    return res.status(500).json({ error: 'Error al conectar con HuggingFace', detail: err.message });
   }
 }
